@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Venta de Arroz</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <h1>Distribuidora de Arroz</h1>
+
+            <br />
+            <div>
+                <h3 class="text-muted">Disponible en Stock</h3>
+                <div class="input-group mb-3">
+                    <span class="input-group-text bg-dark text-white" id="basic-addon1">Bodega 1</span>
+                    <span v-text="cantBod1" class="form-control" aria-describedby="basic-addon1"></span>
+                </div>
+                <div class="input-group mb-3">
+                    <strong><span class="input-group-text bg-primary text-white">Bodega 2</span></strong>
+                    <span v-text="cantBod2" class="form-control" aria-describedby="basic-addon1">
+                </div>
+      
+
+                <br />
+                
+          
+            </div>
+            <br />          
+            <h4 class="text-muted">Indique la bodega de la cual se realizará la venta</h4>
+            <br />
+
+        <select v-model="opBod" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option  value="0" selected>Seleccione una opción</option>
+          <option value="1">Bodega 1</option>
+          <option value="2">Bodega 2</option>
+        </select>
+
+        <select v-model="opMed" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+          <option value="0" selected>Seleccione una opción</option>
+          <option value="1">Libras</option>
+          <option value="2">Kilos</option>
+        </select>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">Monto: </span>
+                    <input v-model.number="cant" type="text" class="form-control" placeholder="Ingrese cantidad" aria-label="Username" aria-describedby="basic-addon1" />
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button @click="descBodega" type="button" class="btn btn-success btn-lg">
+                    Realizar Venta
+                        </button>
+                </div>
+                <br>
+                <div class="d-grid gap-2">
+                    <button v-if="isBoton" @click="verVentas" type="button" class="btn btn-dark btn-lg">
+                        Ver Ventas
+                    </button>
+                    <button v-else @click="ocultarVentas" type="button" class="btn btn-primary btn-lg">
+                        Ocultar Ventas
+                    </button>
+                </div>
+                <br>
+                <div v-show="isVenta">
+                    <h3>Ventas Realizadas</h3>
+                    <h4 v-text="getVentaBod1()"></h4>
+                    <h4 v-text="getVentaBod2()"></h4>
+                </div>
+            </div>
+        </div>
+</body>
+<script src="js/vue.js"></script>
+<script src="js/appArroz.js"></script>
+
+</html>
